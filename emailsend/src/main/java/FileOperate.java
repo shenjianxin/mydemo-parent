@@ -14,11 +14,6 @@ import java.util.zip.ZipFile;
 
 /**
  * 文件操作工具类
- *
- * @author zl
- * @version [版本号, 2014-1-3]
- * @see [相关类/方法]
- * @since [CPS]
  */
 public class FileOperate {
 

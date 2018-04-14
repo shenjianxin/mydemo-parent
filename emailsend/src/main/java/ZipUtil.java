@@ -11,11 +11,6 @@ import java.util.zip.*;
 
 /**
  * zip压缩工具 <功能详细描述>
- *
- * @author Administrator
- * @version [版本号, Jun 8, 2012]
- * @see [相关类/方法]
- * @since [民航代理人系统(ASMS)/ASMS5000]
  */
 public class ZipUtil {
     /**

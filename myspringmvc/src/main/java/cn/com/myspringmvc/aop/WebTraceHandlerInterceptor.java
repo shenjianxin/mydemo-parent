@@ -13,15 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 public class WebTraceHandlerInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
-        System.out.println("preHandle");
+        LogUtil.getLog();
 
         return super.preHandle(request, response, handler);
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        System.out.println("afterCompletion");
+        LogUtil.getLog();
         super.afterCompletion(request, response, handler, ex);
     }
 }

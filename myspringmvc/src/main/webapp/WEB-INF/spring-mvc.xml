@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+       default-lazy-init="true">
+
+    <bean class=" org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+        <property name="basePackage" value="cn.com.myspringmvc.web"/>
+        <property name="pathPrefix" value="mymvc"/>
+        <property name="order" value="1"/>
+        <!-- Controller延迟实例化 -->
+        <property name="lazyInitHandlers" value="true"/>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="webBindingInitializer" ref="webBindingInitializer"/>
+        <property name="messageConverters">
+            <list>
+                <ref bean="string_hmc"/>
+                <ref bean="jackson_hmc"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="string_hmc" class="org.springframework.http.converter.StringHttpMessageConverter">
+        <constructor-arg value="UTF-8"/>
+    </bean>
+    <bean id="jackson_hmc" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="prettyPrint" value="true"/>
+        <property name="supportedMediaTypes">
+            <list>
+                <bean class="org.springframework.http.MediaType">
+                    <constructor-arg index="0" value="application" />
+                    <constructor-arg index="1" value="json" />
+                    <constructor-arg index="2" value="UTF-8" />
+                </bean>
+                <bean class="org.springframework.http.MediaType">
+                    <constructor-arg index="0" value="text" />
+                    <constructor-arg index="1" value="*" />
+                    <constructor-arg index="2" value="UTF-8" />
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 自动扫描且只扫描@Controller -->
+    <context:component-scan base-package="cn.com.myspringmvc.web" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation"
+                                expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
+    <bean id="webBindingInitializer" class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+        <property name="conversionService" ref="conversionService"/>
+    </bean>
+    <!-- 定义JSP文件的位置 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="order" value="1"/>
+    </bean>
+
+    <!-- 容器默认的DefaultServletHandler处理 所有静态内容与无RequestMapping处理的URL-->
+    <mvc:default-servlet-handler/>
+    <bean id="exceptionHandler" class="cn.com.myspringmvc.web.handler.MyMvcExceptionHandler"/>
+
+
+    <!-- MVC拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/mymvc/**"/>
+            <!-- web层日志溯源拦截器 -->
+            <bean class="cn.com.myspringmvc.aop.WebTraceHandlerInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>

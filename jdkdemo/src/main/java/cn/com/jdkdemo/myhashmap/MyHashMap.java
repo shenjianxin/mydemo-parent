@@ -1,6 +1,6 @@
 package cn.com.jdkdemo.myhashmap;
 
-public class HashMap<K, V> implements Map<K, V> {
+public class MyHashMap<K, V> implements MyMap<K, V> {
     private static final int defaultLength = 1 << 4;
 
     private static final float defalutFactor = 0.75f;
@@ -8,11 +8,11 @@ public class HashMap<K, V> implements Map<K, V> {
 
     private Entry<K, V>[] table = null;
 
-    public HashMap() {
+    public MyHashMap() {
         this(defaultLength, defalutFactor);
     }
 
-    public HashMap(int defaultLength, float defalutFactor) {
+    public MyHashMap(int defaultLength, float defalutFactor) {
         defalutFactor = defalutFactor;
         defaultLength = defaultLength;
         this.table = new Entry[defaultLength];
@@ -26,6 +26,7 @@ public class HashMap<K, V> implements Map<K, V> {
         System.out.println(i);
         return i >= 0 ? i : -i;
     }
+
 
     @Override
     public V put(K k, V v) {
@@ -66,7 +67,7 @@ public class HashMap<K, V> implements Map<K, V> {
     }
 
 
-    class Entry<K, V> implements Map.Entry<K, V> {
+    class Entry<K, V> implements MyMap.Entry<K, V> {
 
         K k;
         V v;

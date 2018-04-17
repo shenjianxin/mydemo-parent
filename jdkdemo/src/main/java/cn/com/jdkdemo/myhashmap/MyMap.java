@@ -1,7 +1,7 @@
 package cn.com.jdkdemo.myhashmap;
 
-public interface Map<K, V> {
-    V get(V k);
+public interface MyMap<K, V> {
+    V get(K k);
 
     V put(K k, V v);
 

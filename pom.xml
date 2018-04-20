@@ -14,6 +14,7 @@
         <module>emailsend</module>
         <module>myspringmvc</module>
         <module>httpclient</module>
+        <module>mydesignmode</module>
     </modules>
 
 

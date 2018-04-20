@@ -1,20 +1,19 @@
 package cn.com.jdkdemo.myhashmap;
 
 public class MyHashMap<K, V> implements MyMap<K, V> {
-    private static final int defaultLength = 1 << 4;
+    private int defaultLength = 1 << 4;
 
-    private static final float defalutFactor = 0.75f;
-
+    private float defalutFactor = 0.75f;
 
     private Entry<K, V>[] table = null;
 
     public MyHashMap() {
-        this(defaultLength, defalutFactor);
+        this(1 << 4, 0.75f);
     }
 
     public MyHashMap(int defaultLength, float defalutFactor) {
-        defalutFactor = defalutFactor;
-        defaultLength = defaultLength;
+        this.defalutFactor = defalutFactor;
+        this.defaultLength = defaultLength;
         this.table = new Entry[defaultLength];
     }
 
@@ -35,6 +34,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         if (entry == null) {
             table[index] = new Entry<K, V>(k, v, null);
         } else {
+            //先扩容在添加
             table[index] = new Entry<K, V>(k, v, entry);
         }
         return table[index].getValue();

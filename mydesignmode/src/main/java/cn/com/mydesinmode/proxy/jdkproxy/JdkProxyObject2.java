@@ -37,7 +37,7 @@ public class JdkProxyObject2 implements InvocationHandler {
             System.out.println("执行后22");
             return object;
         } else {
-            return method.invoke(proxy, args);
+            return method.invoke(targetObject, args);
         }
     }
 }

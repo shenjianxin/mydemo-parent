@@ -11,7 +11,7 @@ public class MyTestClient {
 
 
     public static void main(String[] args) {
-        main2();
+        main1();
     }
 
     //单层动态代理

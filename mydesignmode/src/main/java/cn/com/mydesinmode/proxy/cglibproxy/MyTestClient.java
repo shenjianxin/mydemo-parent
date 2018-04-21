@@ -1,9 +1,5 @@
 package cn.com.mydesinmode.proxy.cglibproxy;
 
-import cn.com.mydesinmode.proxy.jdkproxy.ITargetObject;
-import cn.com.mydesinmode.proxy.jdkproxy.JdkProxyObject;
-import cn.com.mydesinmode.proxy.jdkproxy.JdkProxyObject2;
-import cn.com.mydesinmode.proxy.jdkproxy.TargetObject;
 
 import java.lang.reflect.Proxy;
 
@@ -21,8 +17,11 @@ public class MyTestClient {
 
     //单层动态代理
     public static void main1() {
-
-
+        TargetObject targetObject=new TargetObject();
+        DefaultMethodInterceptor defaultMethodInterceptor=new DefaultMethodInterceptor();
+        CglibProxyObject cglibProxyObject=new CglibProxyObject(defaultMethodInterceptor);
+        TargetObject targetObject1=(TargetObject)cglibProxyObject.getTargetInstance(targetObject);
+        targetObject1.hello("张三");
     }
 
 

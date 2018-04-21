@@ -9,8 +9,8 @@ import cn.com.mydesinmode.proxy.jdkproxy.ITargetObject;
  */
 public class TargetObject {
 
-    public String hello() {
-        String ss = "hello!";
+    public String hello(String name) {
+        String ss = name+"hello!";
         System.out.println(ss);
         return ss;
     }

@@ -15,6 +15,7 @@
         <module>myspringmvc</module>
         <module>httpclient</module>
         <module>mydesignmode</module>
+        <module>mydisruptor</module>
     </modules>
 
 

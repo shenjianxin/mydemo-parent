@@ -56,8 +56,8 @@ public class MyClassSynchronizedTest {
 
 
     public static void main(String[] args) {
-        //new MyClassSynchronizedTest().classSynchronized();
-        new MyClassSynchronizedTest().objectSynchronized();
+        new MyClassSynchronizedTest().classSynchronized();
+        //new MyClassSynchronizedTest().objectSynchronized();
     }
 
     //类锁

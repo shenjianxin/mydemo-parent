@@ -16,6 +16,7 @@
         <module>httpclient</module>
         <module>mydesignmode</module>
         <module>mydisruptor</module>
+        <module>guava</module>
     </modules>
 
 

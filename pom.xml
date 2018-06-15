@@ -17,6 +17,7 @@
         <module>mydesignmode</module>
         <module>mydisruptor</module>
         <module>guava</module>
+        <module>myjvm</module>
     </modules>
 
 

@@ -9,7 +9,7 @@ package cn.com.myjvm;
  * 会按照如下顺序加载，1、父类中的静态块、静态方法；2、子类中的静态块、静态方法；3、父类的构造块；4、父类的构造方法；5、子类的构造块；6、子类的构造方法。
  */
 public class MyTest1 {
-
+    private static String staticVal1 = System.currentTimeMillis() + "静态属性1";
     static {
         System.out.println(System.currentTimeMillis() + "静态代码块1");
     }
@@ -17,20 +17,27 @@ public class MyTest1 {
     static {
         System.out.println(System.currentTimeMillis() + "静态代码块2");
     }
-    public MyTest1() {
-        System.out.println(System.currentTimeMillis() + "构造方法");
-    }
-    {
-        System.out.println(System.currentTimeMillis() + "构造代码块1");
-    }
+    private static String staticVal2 = System.currentTimeMillis() + "静态属性2";
+
+
+    private String val1 = System.currentTimeMillis() + "普通属性1";
     {
         System.out.println(System.currentTimeMillis() + "构造代码块2");
     }
-    private String val1 = System.currentTimeMillis() + "普通属性1";
+    private String val3 = System.currentTimeMillis() + "普通属性3";
+    public MyTest1() {
+        System.out.println(System.currentTimeMillis() + "构造方法");
+    }
+    private String val4 = System.currentTimeMillis() + "普通属性4";
+    {
+        System.out.println(System.currentTimeMillis() + "构造代码块1");
+    }
+
+
     private String val2 = System.currentTimeMillis() + "普通属性2";
 
-    private static String staticVal1 = System.currentTimeMillis() + "静态属性1";
-    private static String staticVal2 = System.currentTimeMillis() + "静态属性2";
+
+
 
     public static void main(String[] args) throws InterruptedException {
         System.out.println("**************");

@@ -22,6 +22,8 @@ public class MyBloomFilterHelper {
             lists.add(uuid);
         }
 
+
+
         int right = 0;
         int wrong = 0;
         for (int i = 0; i < 10000; i++) {

@@ -18,6 +18,7 @@
         <module>mydisruptor</module>
         <module>guava</module>
         <module>myjvm</module>
+        <module>xxljob</module>
     </modules>
 
 

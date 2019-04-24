@@ -10,20 +10,15 @@ public class EventHandle implements EventHandler<Event> {
     /**
      * 线程池
      */
-    private EventHandleWorkPool workPool;
+    private WorkPoolFactory workPool;
 
     /**
      * 构造
-     *
-     * @param size 线程大小
      */
-    public EventHandle(int size) {
-        workPool = new EventHandleWorkPool(size);
+    public EventHandle(WorkPoolConfig config) {
+        workPool = WorkPoolFactory.initWorkPool(config, WorkPoolFactory.ThreadGroupEnum.DISRUPTOR);
     }
 
-    public EventHandleWorkPool getWorkPool() {
-        return workPool;
-    }
 
     /**
      * 执行事件
@@ -36,7 +31,7 @@ public class EventHandle implements EventHandler<Event> {
     @Override
     public void onEvent(Event event, long sequence, boolean endOfBatch) throws Exception {
         try {
-            AbstractEventHandle task = event.getEventHandle().newInstance();
+            AbstractEventHandle task = event.getEventHandle();
             Event eventNew = new Event();
             eventNew.setData(event.getData());
             eventNew.setEventHandle(event.getEventHandle());
@@ -48,7 +43,7 @@ public class EventHandle implements EventHandler<Event> {
             task.setEvent(eventNew);
             workPool.execute(task);
         } catch (Exception e) {
-            e.printStackTrace();
+            //LoggerEx.exception(e);
         }
     }
 

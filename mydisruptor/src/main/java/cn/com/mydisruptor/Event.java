@@ -19,7 +19,7 @@ public class Event {
     /**
      * 队列任务处理者
      */
-    private Class<? extends AbstractEventHandle> eventHandle;
+    private AbstractEventHandle eventHandle;
 
     /**
      * 待处理数据

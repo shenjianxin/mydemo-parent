@@ -2,6 +2,7 @@ package cn.com.proxy.proxy.example;
 
 
 import org.junit.Test;
+
 /**
  * JAVA的动态代理 
 代理模式 

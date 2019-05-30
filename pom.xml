@@ -19,6 +19,7 @@
         <module>guava</module>
         <module>myjvm</module>
         <module>xxljob</module>
+        <module>proxy</module>
     </modules>
 
 

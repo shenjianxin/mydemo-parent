@@ -1,7 +1,7 @@
 package cn.com.proxy.proxy.stati.example;
 
 public interface IHandle {
-	public void before();
+	void before();
 	
-	public void end();
+	void end();
 }

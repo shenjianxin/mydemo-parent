@@ -1,11 +1,12 @@
 package cn.com.proxy.bean;
 
+import cn.com.proxy.bean.annotation.Autowired;
+import cn.com.proxy.proxy.transation.Transation;
+import cn.com.proxy.proxy.transation.TransationProxy;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import org.coures.core.bean.annotation.Autowired;
-import org.coures.core.proxy.transation.Transation;
-import org.coures.core.proxy.transation.TransationProxy;
 
 public class BeanFactory {
 	public static Object getBean(Class clss) throws Exception{

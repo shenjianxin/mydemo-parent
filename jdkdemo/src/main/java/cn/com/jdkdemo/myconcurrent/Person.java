@@ -3,7 +3,7 @@ package cn.com.jdkdemo.myconcurrent;
 import java.io.Serializable;
 
 /**
- * Copyright (C), 2017-2018, 武汉市胜意科技发展有限公司
+ * Copyright (C), 2017-2018
  * Author:   shenjx
  * Date:     2018/4/3 10:51
  * Description:

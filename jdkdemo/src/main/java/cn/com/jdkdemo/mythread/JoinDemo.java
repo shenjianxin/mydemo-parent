@@ -20,7 +20,7 @@ public class JoinDemo extends Thread {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("num:" + i);
+        System.out.println("num:" + i + ",上一个线程执行完成后，释放自身的锁，当前线程从join阻塞进入执行阶段");
     }
 
     public static void main(String[] args) {
@@ -30,5 +30,6 @@ public class JoinDemo extends Thread {
             joinDemo.start();
             previousThread = joinDemo;
         }
+        System.out.println("主线程最先执行完，才会释放锁，让previousThread获取锁进入wait状态");
     }
 }
